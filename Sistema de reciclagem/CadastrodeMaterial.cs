@@ -16,5 +16,16 @@ namespace Sistema_de_reciclagem
         {
             InitializeComponent();
         }
+
+        private void lb_materias_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_Salvar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            //codigo para salvar os dados no banco de dados
+        }
     }
 }

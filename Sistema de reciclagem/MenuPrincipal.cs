@@ -10,7 +10,7 @@ namespace Sistema_de_reciclagem
         private void bt_CadastrarMaterial_Click(object sender, EventArgs e)
         {
             new Frm_Cadastro_de_Material().ShowDialog();
-            MessageBox.Show("Abrindo a tela de cadastro de material.");
+            MessageBox.Show("Materiais cadastrado com sucesso.");
         }
 
         private void bt_RegistrarCompra_Click(object sender, EventArgs e)
