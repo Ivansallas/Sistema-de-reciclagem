@@ -44,7 +44,7 @@
             bt_CadastrarMaterial.ForeColor = SystemColors.ActiveCaptionText;
             bt_CadastrarMaterial.Location = new Point(127, 35);
             bt_CadastrarMaterial.Name = "bt_CadastrarMaterial";
-            bt_CadastrarMaterial.Size = new Size(153, 72);
+            bt_CadastrarMaterial.Size = new Size(184, 110);
             bt_CadastrarMaterial.TabIndex = 0;
             bt_CadastrarMaterial.Text = "Cadastrar Material";
             bt_CadastrarMaterial.UseVisualStyleBackColor = false;
@@ -55,7 +55,7 @@
             bt_RegistrarCompra.BackColor = SystemColors.ControlDarkDark;
             bt_RegistrarCompra.Location = new Point(127, 206);
             bt_RegistrarCompra.Name = "bt_RegistrarCompra";
-            bt_RegistrarCompra.Size = new Size(153, 69);
+            bt_RegistrarCompra.Size = new Size(184, 93);
             bt_RegistrarCompra.TabIndex = 1;
             bt_RegistrarCompra.Text = "Registrar Compra";
             bt_RegistrarCompra.UseVisualStyleBackColor = false;
@@ -66,7 +66,7 @@
             bt_Relatório.BackColor = SystemColors.Info;
             bt_Relatório.Location = new Point(127, 358);
             bt_Relatório.Name = "bt_Relatório";
-            bt_Relatório.Size = new Size(153, 71);
+            bt_Relatório.Size = new Size(184, 92);
             bt_Relatório.TabIndex = 2;
             bt_Relatório.Text = "Relatório";
             bt_Relatório.UseVisualStyleBackColor = false;
