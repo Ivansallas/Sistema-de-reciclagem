@@ -32,6 +32,8 @@
             txt_QuantidadeemKg = new TextBox();
             txt_NomedoCatador = new TextBox();
             lb_ValoraPagar = new Label();
+            bt_Registrar = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // cb_Material
@@ -42,10 +44,11 @@
             cb_Material.Size = new Size(151, 28);
             cb_Material.TabIndex = 0;
             cb_Material.Text = "Material";
+            cb_Material.SelectedIndexChanged += cb_Material_SelectedIndexChanged;
             // 
             // txt_QuantidadeemKg
             // 
-            txt_QuantidadeemKg.Location = new Point(26, 249);
+            txt_QuantidadeemKg.Location = new Point(26, 222);
             txt_QuantidadeemKg.Name = "txt_QuantidadeemKg";
             txt_QuantidadeemKg.Size = new Size(337, 27);
             txt_QuantidadeemKg.TabIndex = 1;
@@ -53,7 +56,7 @@
             // 
             // txt_NomedoCatador
             // 
-            txt_NomedoCatador.Location = new Point(26, 180);
+            txt_NomedoCatador.Location = new Point(26, 156);
             txt_NomedoCatador.Name = "txt_NomedoCatador";
             txt_NomedoCatador.Size = new Size(337, 27);
             txt_NomedoCatador.TabIndex = 2;
@@ -62,23 +65,48 @@
             // lb_ValoraPagar
             // 
             lb_ValoraPagar.AutoSize = true;
-            lb_ValoraPagar.Location = new Point(26, 309);
+            lb_ValoraPagar.Location = new Point(26, 290);
             lb_ValoraPagar.Name = "lb_ValoraPagar";
             lb_ValoraPagar.Size = new Size(96, 20);
             lb_ValoraPagar.TabIndex = 3;
             lb_ValoraPagar.Text = "Valor a Pagar";
+            lb_ValoraPagar.Click += lb_ValoraPagar_Click;
+            // 
+            // bt_Registrar
+            // 
+            bt_Registrar.Location = new Point(388, 418);
+            bt_Registrar.Name = "bt_Registrar";
+            bt_Registrar.Size = new Size(107, 42);
+            bt_Registrar.TabIndex = 4;
+            bt_Registrar.Text = "Registrar";
+            bt_Registrar.UseVisualStyleBackColor = true;
+            bt_Registrar.Click += bt_Registrar_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Sitka Display Semibold", 12F);
+            label1.Location = new Point(26, 43);
+            label1.Name = "label1";
+            label1.Size = new Size(157, 29);
+            label1.TabIndex = 5;
+            label1.Text = "Lista de materiais";
             // 
             // Frm_RegistraCompras
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(546, 505);
+            Controls.Add(label1);
+            Controls.Add(bt_Registrar);
             Controls.Add(lb_ValoraPagar);
             Controls.Add(txt_NomedoCatador);
             Controls.Add(txt_QuantidadeemKg);
             Controls.Add(cb_Material);
             Name = "Frm_RegistraCompras";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistraCompras";
+            Load += Frm_RegistraCompras_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -89,5 +117,7 @@
         private TextBox txt_QuantidadeemKg;
         private TextBox txt_NomedoCatador;
         private Label lb_ValoraPagar;
+        private Button bt_Registrar;
+        private Label label1;
     }
 }
