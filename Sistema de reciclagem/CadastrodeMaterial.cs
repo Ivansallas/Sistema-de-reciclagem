@@ -27,5 +27,10 @@ namespace Sistema_de_reciclagem
             this.Close();
             //codigo para salvar os dados no banco de dados
         }
+
+        private void txt_NomedoMaterial_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -41,6 +41,7 @@
             txt_NomedoMaterial.Size = new Size(300, 27);
             txt_NomedoMaterial.TabIndex = 0;
             txt_NomedoMaterial.Text = "Nome do Material";
+            txt_NomedoMaterial.TextChanged += txt_NomedoMaterial_TextChanged;
             // 
             // textBox2
             // 
@@ -52,7 +53,7 @@
             // 
             // bt_Salvar
             // 
-            bt_Salvar.BackColor = Color.Chartreuse;
+            bt_Salvar.BackColor = Color.Silver;
             bt_Salvar.Location = new Point(436, 211);
             bt_Salvar.Name = "bt_Salvar";
             bt_Salvar.Size = new Size(114, 43);
@@ -64,19 +65,20 @@
             // lb_materias
             // 
             lb_materias.AutoSize = true;
-            lb_materias.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lb_materias.Location = new Point(27, 70);
+            lb_materias.Font = new Font("Baskerville Old Face", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb_materias.Location = new Point(27, 64);
             lb_materias.Name = "lb_materias";
-            lb_materias.Size = new Size(362, 23);
+            lb_materias.Size = new Size(406, 32);
             lb_materias.TabIndex = 3;
             lb_materias.Text = "Qual materias você quer cadastrar?";
+            lb_materias.TextAlign = ContentAlignment.TopCenter;
             lb_materias.Click += lb_materias_Click;
             // 
             // Frm_Cadastro_de_Material
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(572, 284);
+            ClientSize = new Size(603, 309);
             Controls.Add(lb_materias);
             Controls.Add(bt_Salvar);
             Controls.Add(textBox2);

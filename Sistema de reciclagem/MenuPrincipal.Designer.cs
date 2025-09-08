@@ -40,9 +40,9 @@
             // 
             // bt_CadastrarMaterial
             // 
-            bt_CadastrarMaterial.BackColor = SystemColors.ActiveCaption;
+            bt_CadastrarMaterial.BackColor = SystemColors.Info;
             bt_CadastrarMaterial.ForeColor = SystemColors.ActiveCaptionText;
-            bt_CadastrarMaterial.Location = new Point(127, 35);
+            bt_CadastrarMaterial.Location = new Point(28, 64);
             bt_CadastrarMaterial.Name = "bt_CadastrarMaterial";
             bt_CadastrarMaterial.Size = new Size(184, 110);
             bt_CadastrarMaterial.TabIndex = 0;
@@ -52,10 +52,10 @@
             // 
             // bt_RegistrarCompra
             // 
-            bt_RegistrarCompra.BackColor = SystemColors.ControlDarkDark;
-            bt_RegistrarCompra.Location = new Point(127, 206);
+            bt_RegistrarCompra.BackColor = SystemColors.Info;
+            bt_RegistrarCompra.Location = new Point(218, 64);
             bt_RegistrarCompra.Name = "bt_RegistrarCompra";
-            bt_RegistrarCompra.Size = new Size(184, 93);
+            bt_RegistrarCompra.Size = new Size(205, 110);
             bt_RegistrarCompra.TabIndex = 1;
             bt_RegistrarCompra.Text = "Registrar Compra";
             bt_RegistrarCompra.UseVisualStyleBackColor = false;
@@ -64,7 +64,7 @@
             // bt_Relatório
             // 
             bt_Relatório.BackColor = SystemColors.Info;
-            bt_Relatório.Location = new Point(127, 358);
+            bt_Relatório.Location = new Point(119, 192);
             bt_Relatório.Name = "bt_Relatório";
             bt_Relatório.Size = new Size(184, 92);
             bt_Relatório.TabIndex = 2;
@@ -77,9 +77,9 @@
             Gpb_Menu.Controls.Add(bt_CadastrarMaterial);
             Gpb_Menu.Controls.Add(bt_Relatório);
             Gpb_Menu.Controls.Add(bt_RegistrarCompra);
-            Gpb_Menu.Location = new Point(332, 30);
+            Gpb_Menu.Location = new Point(270, 30);
             Gpb_Menu.Name = "Gpb_Menu";
-            Gpb_Menu.Size = new Size(391, 456);
+            Gpb_Menu.Size = new Size(453, 456);
             Gpb_Menu.TabIndex = 3;
             Gpb_Menu.TabStop = false;
             Gpb_Menu.Text = "Menu";
@@ -89,8 +89,8 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(25, 30);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(301, 214);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.Size = new Size(225, 225);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
@@ -107,6 +107,7 @@
             Gpb_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
