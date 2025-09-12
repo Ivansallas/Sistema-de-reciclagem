@@ -10,39 +10,40 @@ namespace Sistema_de_reciclagem
             InitializeComponent();
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private void bt_Cadastrar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtNome.Text) || string.IsNullOrWhiteSpace(txtPreco.Text))
+                if (string.IsNullOrWhiteSpace(txt_Nome.Text) || string.IsNullOrWhiteSpace(txt_Preco.Text))
                 {
                     MessageBox.Show("Preencha todos os campos!");
                     return;
                 }
 
-                var mat = new Material
+                if (!decimal.TryParse(txt_Preco.Text, out decimal preco))
                 {
-                    Nome = txtNome.Text,
-                    PrecoPorKg = decimal.Parse(txtPreco.Text)
+                    MessageBox.Show("Digite um preço válido!");
+                    return;
+                }
+
+                var material = new Material
+                {
+                    Nome = txt_Nome.Text,
+                    PrecoPorKg = preco
                 };
 
-                Sistema.Materiais.Add(mat);
-                Sistema.Salvar(); // 🔹 salva imediatamente
+                Sistema.Materiais.Add(material);
+                Sistema.Salvar();
 
                 MessageBox.Show("Material cadastrado com sucesso!");
-                txtNome.Clear();
-                txtPreco.Clear();
+
+                txt_Nome.Clear();
+                txt_Preco.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao salvar material: " + ex.Message);
+                MessageBox.Show("Erro ao cadastrar material: " + ex.Message);
             }
-        }
-
-        private void bt_Salvar_Click(object sender, EventArgs e)
-        {
-            // Implemente aqui a lógica para salvar o material
-            MessageBox.Show("Material salvo com sucesso!");
         }
     }
 }

@@ -5,64 +5,49 @@ namespace Sistema_de_reciclagem
 {
     public partial class Frm_RegistraCompras : Form
     {
-        // Adicione estas linhas para declarar os campos de texto
-        private TextBox txtCatador;
-        private TextBox txtQuantidade;
-        private ComboBox cmbMateriais;
-
         public Frm_RegistraCompras()
         {
             InitializeComponent();
-
-            // Inicialize os campos de texto se não estiver sendo feito no designer
-            txtCatador = new TextBox();
-            txtCatador.Location = new System.Drawing.Point(10, 10); // ajuste conforme necessário
-            Controls.Add(txtCatador);
-
-            txtQuantidade = new TextBox();
-            txtQuantidade.Location = new System.Drawing.Point(10, 40); // ajuste conforme necessário
-            txtQuantidade.TextChanged += txt_Quantidade_TextChanged; // evento para atualizar valor
-            Controls.Add(txtQuantidade);
-
-            cmbMateriais = new ComboBox();
-            cmbMateriais.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbMateriais.Location = new System.Drawing.Point(10, 70); // ajuste conforme necessário
-            Controls.Add(cmbMateriais);
-
-            cmbMateriais.DataSource = null;
-            cmbMateriais.DataSource = Sistema.Materiais;
+            AtualizarComboMateriais();
         }
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private void bt_Registrar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (cmbMateriais.SelectedItem is not Material mat)
+                if (cb_Material.SelectedItem is not Material mat)
                 {
                     MessageBox.Show("Selecione um material.");
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(txtCatador.Text) || string.IsNullOrWhiteSpace(txtQuantidade.Text))
+                if (string.IsNullOrWhiteSpace(txt_Catador.Text) || string.IsNullOrWhiteSpace(txt_Quantidade.Text))
                 {
                     MessageBox.Show("Preencha todos os campos!");
                     return;
                 }
 
+                if (!decimal.TryParse(txt_Quantidade.Text, out decimal quantidade))
+                {
+                    MessageBox.Show("Digite uma quantidade válida!");
+                    return;
+                }
+
                 var compra = new Compra
                 {
-                    Catador = txtCatador.Text,
+                    Catador = txt_Catador.Text,
                     Material = mat,
-                    QuantidadeKg = decimal.Parse(txtQuantidade.Text)
+                    QuantidadeKg = quantidade
                 };
 
                 Sistema.Compras.Add(compra);
-                Sistema.Salvar(); // 🔹 salva imediatamente
+                Sistema.Salvar();
 
                 MessageBox.Show($"Compra registrada! Valor a pagar: R$ {compra.ValorTotal:F2}");
 
-                txtCatador.Clear();
-                txtQuantidade.Clear();
+                txt_Catador.Clear();
+                txt_Quantidade.Clear();
+                lb_ValoraPagar.Text = "Valor a pagar: R$ 0,00";
             }
             catch (Exception ex)
             {
@@ -70,27 +55,28 @@ namespace Sistema_de_reciclagem
             }
         }
 
-        private void cb_Material_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Implemente aqui a lógica que deve ocorrer quando o material for alterado.
-            // Por exemplo, atualizar o valor a pagar ou outros campos.
-        }
+        private void cb_Material_SelectedIndexChanged(object sender, EventArgs e) => AtualizarValorAPagar();
 
-        private void txt_Quantidade_TextChanged(object? sender, EventArgs e)
+        private void txt_Quantidade_TextChanged(object sender, EventArgs e) => AtualizarValorAPagar();
+
+        private void AtualizarValorAPagar()
         {
-            // Exemplo: Atualiza o valor a pagar conforme a quantidade digitada
-            decimal quantidade;
-            if (decimal.TryParse(txtQuantidade.Text, out quantidade))
+            if (cb_Material.SelectedItem is Material mat && decimal.TryParse(txt_Quantidade.Text, out decimal quantidade))
             {
-                // Supondo que o valor do material seja fixo, por exemplo, 2.50 por Kg
-                decimal valorPorKg = 2.50m;
-                decimal valorTotal = quantidade * valorPorKg;
-                lb_ValoraPagar.Text = $"Valor a pagar: R$ {valorTotal:N2}";
+                decimal valorTotal = mat.PrecoPorKg * quantidade;
+                lb_ValoraPagar.Text = $"Valor a pagar: R$ {valorTotal:F2}";
             }
             else
             {
                 lb_ValoraPagar.Text = "Valor a pagar: R$ 0,00";
             }
+        }
+
+        public void AtualizarComboMateriais()
+        {
+            cb_Material.DataSource = null;
+            cb_Material.DataSource = Sistema.Materiais;
+            cb_Material.DisplayMember = "Nome";
         }
     }
 }

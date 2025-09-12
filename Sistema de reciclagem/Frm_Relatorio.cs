@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Sistema_de_reciclagem
@@ -10,36 +8,27 @@ namespace Sistema_de_reciclagem
         public Frm_Relatorio()
         {
             InitializeComponent();
+            AtualizarRelatorio();
         }
 
-        private void Frm_Relatorio_Load(object sender, EventArgs e)
+        private void AtualizarRelatorio()
         {
-            if (Sistema.Compras.Count == 0)
+            lvCompras.Items.Clear();
+
+            foreach (var compra in Sistema.Compras)
             {
-                richTextBox1.Text = "Nenhuma compra registrada ainda.";
-                return;
+                var item = new ListViewItem(compra.Catador);
+                item.SubItems.Add(compra.Material.Nome);
+                item.SubItems.Add(compra.QuantidadeKg.ToString("N2"));
+                item.SubItems.Add(compra.Material.PrecoPorKg.ToString("C2"));
+                item.SubItems.Add(compra.ValorTotal.ToString("C2"));
+                lvCompras.Items.Add(item);
             }
+        }
 
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("RELATÓRIO DE COMPRAS");
-            sb.AppendLine(new string('-', 60));
-
-            foreach (var c in Sistema.Compras)
-            {
-                sb.AppendLine(
-                    $"{c.Data:dd/MM/yyyy} | " +
-                    $"{c.Catador,-15} | " +
-                    $"{c.Material.Nome,-10} | " +
-                    $"{c.QuantidadeKg,5} Kg | " +
-                    $"R$ {c.ValorTotal,8:F2}"
-                );
-            }
-
-            sb.AppendLine(new string('-', 60));
-            sb.AppendLine($"Total de compras: {Sistema.Compras.Count}");
-            sb.AppendLine($"Valor total pago: R$ {Sistema.Compras.Sum(x => x.ValorTotal):F2}");
-
-            richTextBox1.Text = sb.ToString();
+        private void bt_Atualizar_Click(object sender, EventArgs e)
+        {
+            AtualizarRelatorio();
         }
     }
 }
